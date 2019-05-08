@@ -1,33 +1,13 @@
-.App {
-  text-align: center;
+circle {
+  fill: rgba(46, 59, 240, 0.438);
+  opacity: 1;
+  stroke: white;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+line {
+  stroke: rgb(113, 80, 233);
+  stroke-width: 0.5px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hull {
+  fill-opacity: 0.3;
+  stroke-width: 5px;
 }

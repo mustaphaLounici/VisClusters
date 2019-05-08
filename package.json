@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "d3": "^5.9.2",
+    "ngraph.coarsen": "^1.4.1",
+    "ngraph.cw": "^2.0.0",
+    "ngraph.graph": "0.0.18",
+    "ngraph.louvain": "^2.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.0"
