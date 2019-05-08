@@ -12,14 +12,15 @@ function ForceClusters({ graph }) {
   useEffect(() => {
     setWidth((window.innerWidth / 3) * 2);
   }, [window.innerWidth]);
-  const radius = d3
-    .scaleLinear()
-    .domain([1, 10000])
-    .range([8, 2])(nodes.length);
 
   useEffect(() => {
     const createViz = (Nodes, clusters) => {
       const nodes = Nodes;
+      const radius = d3
+        .scaleLinear()
+        .domain([5, 1000])
+        .range([15, 2])(nodes.length * clusters.length);
+      console.log(radius);
       d3.forceSimulation(nodes)
         .force(
           "link",
@@ -60,7 +61,7 @@ function ForceClusters({ graph }) {
           .remove();
 
         const u = d3
-          .select(SVG.current)
+          .select(".links")
           .selectAll("line")
           .data(links);
 
@@ -88,13 +89,18 @@ function ForceClusters({ graph }) {
           .selectAll("circle")
           .remove();
 
-        var u = d3
-          .select(SVG.current)
-          .selectAll("circle")
-          .data(nodes);
+        d3.select(".nodes")
+          .selectAll("text")
+          .remove();
 
-        u.enter()
-          .append("circle")
+        var u = d3
+          .select(".nodes")
+          .selectAll("circle")
+          .data(nodes)
+          .enter()
+          .append("g");
+
+        u.append("circle")
           .attr("r", radius)
           .merge(u)
           .attr("cx", function(d) {
@@ -112,12 +118,23 @@ function ForceClusters({ graph }) {
             )
           );
 
+        u.append("text")
+          .merge(u)
+          .attr("x", d => d.x)
+          .attr("y", d => {
+            return d.y;
+          })
+          .attr("text-anchor", "middle")
+          .attr("alignment-baseline", "middle")
+          .attr("font-size", radius * 1.5)
+          .text(d => d.id);
+
         u.exit().remove();
       }
 
       function drawCluster(group) {
         let l = [];
-        const offset = 10;
+        const offset = radius * 1;
         const groupNodes = nodes.filter(n => group.includes(n.id));
         groupNodes.forEach(n => {
           l.push([n.x - offset, n.y - offset]);
