@@ -7,6 +7,7 @@ import { GraphFromMat } from "./utils/utils";
 import LPClusturing from "./utils/LPClusturing";
 import LouvainClusturing from "./utils/LouvainClusturing";
 import Options from "./components/Options";
+import ClustersList from "./components/ClustersList";
 // cluster using d3 pack
 // cluster using force layout
 
@@ -36,7 +37,10 @@ function App() {
 
         <Options algo={algo} data={data} onSubmit={optionChange} />
       </div>
-      {graph && <ForceClusters graph={graph} />}
+      <div>
+        {graph && <ForceClusters graph={graph} />}
+        {graph && <ClustersList clusters={graph.clusters} />}
+      </div>
     </div>
   );
 }

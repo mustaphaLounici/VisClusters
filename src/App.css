@@ -9,5 +9,7 @@ line {
 }
 .hull {
   fill-opacity: 0.3;
-  stroke-width: 5px;
+  stroke-width: 7px;
+  stroke-linejoin: round;
+  stroke-opacity: 0.4;
 }

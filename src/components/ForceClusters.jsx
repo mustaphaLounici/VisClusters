@@ -145,6 +145,14 @@ function ForceClusters({ graph }) {
                 .domain([0, clusters.length])
                 .range([0, 1])(i)
             )
+          )
+          .style("stroke", (d, i) =>
+            d3.interpolateSinebow(
+              d3
+                .scaleLinear()
+                .domain([0, clusters.length])
+                .range([0, 1])(i)
+            )
           );
       };
 
