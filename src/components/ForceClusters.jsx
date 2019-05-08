@@ -7,8 +7,8 @@ function ForceClusters({ graph }) {
   const SVG = useRef(null);
   const [width, setWidth] = useState(900);
   const { nodes = {}, links = {}, clusters } = graph;
-
   const height = 700;
+
   useEffect(() => {
     setWidth((window.innerWidth / 3) * 2);
   }, [window.innerWidth]);
@@ -20,7 +20,7 @@ function ForceClusters({ graph }) {
         .scaleLinear()
         .domain([5, 1000])
         .range([15, 2])(nodes.length * clusters.length);
-      console.log(radius);
+
       d3.forceSimulation(nodes)
         .force(
           "link",
