@@ -1,7 +1,5 @@
-// import createGraph from "ngraph.graph";
-const createGraph = require("ngraph.graph");
-// export const GraphFromMat = data => {
-const GraphFromMat = data => {
+import createGraph from "ngraph.graph";
+export const GraphFromMat = data => {
   data = data.toString();
   data = data.split("\n");
   data = data.map(d => {
@@ -23,14 +21,14 @@ const GraphFromMat = data => {
   };
 };
 
-const createNgraph = ({ nodes, links }) => {
+export const createNgraph = ({ nodes, links }) => {
   const g = createGraph();
   links.forEach(link => {
     g.addLink(link.source, link.target);
   });
   return g;
 };
-const createPackData = ({ nodes, clusters }) => {
+export const createPackData = ({ nodes, clusters }) => {
   const data = {
     name: "",
     children: clusters.map((c, i) => {
@@ -43,9 +41,4 @@ const createPackData = ({ nodes, clusters }) => {
   };
 
   return data;
-};
-module.exports = {
-  GraphFromMat,
-  createNgraph,
-  createPackData
 };
