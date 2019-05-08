@@ -37,7 +37,7 @@ function App() {
 
         <Options algo={algo} data={data} onSubmit={optionChange} />
       </div>
-      <div>
+      <div className="d-flex">
         {graph && <ForceClusters graph={graph} />}
         {graph && <ClustersList clusters={graph.clusters} />}
       </div>

@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import * as d3 from "d3";
 // import graph from "./data.json";
 
 function ForceClusters({ graph }) {
   const SVG = useRef(null);
+  const [width, setWidth] = useState(900);
   const { nodes = {}, links = {}, clusters } = graph;
 
-  const width = 900;
   const height = 700;
+  useEffect(() => {
+    setWidth((window.innerWidth / 3) * 2);
+  }, [window.innerWidth]);
   const radius = d3
     .scaleLinear()
     .domain([1, 10000])
@@ -172,7 +175,7 @@ function ForceClusters({ graph }) {
   }, [SVG, graph]);
 
   return (
-    <div>
+    <div className="w-75 border">
       <svg width={width} height={height} ref={SVG}>
         <g className="links" />
         <g className="nodes" />
